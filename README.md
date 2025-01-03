@@ -4,11 +4,11 @@ Simple app for learning and showcasing Redux store and global UI state. In this 
 
 In file `store-v1.js` there is an example where all of the logic and code is in one place. This is an example file where we also print the dispatch function results. It is a good step towards learning redux.
 
-A more modern approach is used in `store-v2.js` and `store.js`. We devided our store into multiple slices, so a slice is basically the initial state, reducer and the action creators.
+A more modern approach is used in `store-v2.js` and `store.js`. We devided our store into multiple slices, so a slice is basically the initial state, reducer and the action creators. In `store-v2.js` we implemented _Redux_ without the toolkit. This is not recommended and is only shown for learning purposes. Instead the most modern and recommended implementation is done in `store.js`.
 
-In `store-v2.js` we implemented _Redux_ without the toolkit. This is not recommended and is only shown for learning purposes. Instead the most modern and recommended implementation is done in `store.js`.
+There are now two versions of `accountSlice.js` and `customerSlice.js`. The `-v1` dosn't use **createSlice** function but rather action creators, a reducer with switch statement and non mutating code. This is also not recommended as a simpler way is accessible. To use **createSlice** function we need to use Redux Toolkit. The _used versions_ are the Redux Toolkit way of doing things.
 
-**CHECK `accountSlice.js`, `customerSlice.js` and `store.js` to see the implementation.**
+**CHECK `accountSlice.js`, `accountSlice-v1.js`, `customerSlice.js` and `store.js`, `store-v1.js`, `store-v2.js` to see the implementations.**
 
 The two main libraries that are used here:
 
@@ -46,3 +46,7 @@ Allows us to write less code to achieve the same result. It sets _Middleware_ an
 3. Automatically sets uo **Thunk Middleware** and **DevTools**.
 
 To install we run: `npm install @reduxjs/toolkit`
+
+In our **Slices** we will be using `createSlice` function that gives us three big benefits. It automatically creates _action creator funcitions_ from our reducers. It makes writing reducers a lot easier, we no longer need _switch_ statement and the default case is automatically handled. We can now mutate our state inside reducers.
+
+**Check accountSlice as it goes over the `prepare` method which is usefull when sending multiple values to dispatch function**
