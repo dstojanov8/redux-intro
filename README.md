@@ -50,3 +50,27 @@ To install we run: `npm install @reduxjs/toolkit`
 In our **Slices** we will be using `createSlice` function that gives us three big benefits. It automatically creates _action creator funcitions_ from our reducers. It makes writing reducers a lot easier, we no longer need _switch_ statement and the default case is automatically handled. We can now mutate our state inside reducers.
 
 **Check accountSlice as it goes over the `prepare` method which is usefull when sending multiple values to dispatch function**
+
+# CONTEXT API + useReducer vs REDUX
+
+### Context API + useReducer
+
+- (+) Build into React
+- (+) Easy to set up a **single context**
+- (-) Additional state "slice" requires new context **set up from scratch** ("provider hell" in App.js)
+- (-) **No** mechanism for async operations
+- (-) Performance optimization is a **pain**
+- (-) Only React DevTools
+
+Use the Context API fom global state management in **small** apps, when you need to share a value that **doesn't change often** [color theme, preferred language, authenticated user, ...]. Good for solving prop **drilling problem** or when we need to manage state in a **local sub-tree** of the app.
+
+### REDUX
+
+- (-) Requires additional packages (larger bundle size)
+- (-) More work to set up **initially**
+- (+) Once set up, it's easy to create **additional state "slices"**
+- (+) Supports **middleware** for async operations
+- (+) Performance is optimized **out of the box**
+- (+) Excellent DevTools
+
+Use Redux for global state management in **large** apps, when you have lots of global UI state that needs to be **updated frequently** (Redux is optimized for this) [shopping cart, current tabs, complex filters or search, ...]. Redux is perfect when you have **complex state** with nested objects (because you can mutate state with Redux Toolkit)
